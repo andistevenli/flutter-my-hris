@@ -6,7 +6,7 @@ Provider<SplashInteractor> splashInteractor = Provider<SplashInteractor>(
   (ref) => SplashInteractor(),
 );
 
-AutoDisposeFutureProviderFamily<SplashModel, String> splashController =
-    FutureProvider.autoDispose.family<SplashModel, String>(
-  (ref, arg) => ref.watch(splashInteractor).generateEurekaEdutechLogo(arg),
+AutoDisposeFutureProvider<SplashModel> splashController =
+    FutureProvider.autoDispose<SplashModel>(
+  (ref) => ref.watch(splashInteractor).generateEurekaEdutechLogo(),
 );

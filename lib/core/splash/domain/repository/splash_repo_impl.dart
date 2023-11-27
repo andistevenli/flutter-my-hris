@@ -7,9 +7,8 @@ import '../../data/mapper/splash_mapper.dart';
 
 class SplashRepoImpl implements ISplashRepo {
   @override
-  Future<SplashModel> generateEurekaEdutechLogo(
-      String eurekaEdutechLogoUrl) async {
+  Future<SplashModel> generateEurekaEdutechLogo() async {
     return moveToSplashModel(await splashDomainInjector<SplashLocalDataSource>()
-        .generateEurekaEdutechLogo(eurekaEdutechLogoUrl));
+        .generateEurekaEdutechLogo());
   }
 }

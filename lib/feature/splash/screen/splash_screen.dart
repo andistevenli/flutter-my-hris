@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_hris/feature/splash/controller/splash_controller.dart';
 import 'package:my_hris/utils/constant/constant_route.dart';
 import 'package:my_hris/utils/constant/constant_unit.dart';
-import 'package:my_hris/utils/constant/constant_url.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
@@ -42,24 +41,23 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Consumer(
-        builder: (context, ref, child) =>
-            ref.watch(splashController(eurekaEdutechLogoUrl)).when(
-                  data: (data) => SafeArea(
-                    child: Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(borderRadius),
-                        child: Image.network(
-                          data.eurekaEdutechLogoUrl,
-                          fit: BoxFit.cover,
-                          height: 100,
-                          width: 100,
-                        ),
-                      ),
+        builder: (context, ref, child) => ref.watch(splashController).when(
+              data: (data) => SafeArea(
+                child: Center(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(borderRadius),
+                    child: Image.network(
+                      data.eurekaEdutechLogoUrl,
+                      fit: BoxFit.cover,
+                      height: 100,
+                      width: 100,
                     ),
                   ),
-                  error: (error, stackTrace) => const SizedBox(),
-                  loading: () => const SizedBox(),
                 ),
+              ),
+              error: (error, stackTrace) => const SizedBox(),
+              loading: () => const SizedBox(),
+            ),
       ),
     );
   }

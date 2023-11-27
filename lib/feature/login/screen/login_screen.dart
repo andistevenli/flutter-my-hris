@@ -33,20 +33,17 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: whiteF7Color,
       body: Consumer(
-        builder: (context, ref, child) => ref
-            .watch(
-              loginController(
-                LoginParameter(
-                    email: _emailController.text,
-                    password: _passwordController.text),
-              ),
-            )
-            .when(
+        builder: (context, ref, child) => ref.watch(loginController).when(
               data: (data) => SafeArea(
                 child: Padding(
                   padding: const EdgeInsets.all(pagePadding),
@@ -59,7 +56,7 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(borderRadius),
                             child: Image.network(
-                              'https://play-lh.googleusercontent.com/CgtHFkL-KeiIfo6LUy-lHavAZi2ZgwQcZ_VXUKsELXyBZha2RCqGBPcv4cj8s1Z6pLn0=w240-h480-rw',
+                              eurekaEdutechLogoUrl,
                               fit: BoxFit.cover,
                               height: 128,
                               width: 128,
@@ -84,7 +81,7 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                                     ),
                                   ),
                                   128.0.dp,
-                                  email.sm(
+                                  (email + requiredSymbol).sm(
                                     1,
                                     TextOverflow.ellipsis,
                                     color: blackColor,
@@ -118,7 +115,7 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                                     },
                                   ),
                                   64.0.dp,
-                                  password.sm(
+                                  (password + requiredSymbol).sm(
                                     1,
                                     TextOverflow.ellipsis,
                                     color: blackColor,
@@ -164,9 +161,32 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                                         textAlign: TextAlign.center),
                                     onPressed: () {
                                       if (_formKey.currentState!.validate()) {
-                                        loginSuccess(true);
-                                        Navigator.pushReplacementNamed(
-                                            context, dashboardRoute);
+                                        if (_emailController.text ==
+                                                data.email &&
+                                            _passwordController.text ==
+                                                data.password) {
+                                          loginSuccess(true);
+                                          Navigator.pushReplacementNamed(
+                                              context, dashboardRoute);
+                                        } else {
+                                          showDialog(
+                                            context: context,
+                                            builder: (context) => AlertDialog(
+                                              backgroundColor: whiteColor,
+                                              title: const Text(incorrect),
+                                              content: const Text(
+                                                  "Your $email and/or $password is $incorrect."),
+                                              actions: [
+                                                TextActionButton(
+                                                  text: okay,
+                                                  bgColor: whiteColor,
+                                                  onPressed: () =>
+                                                      Navigator.pop(context),
+                                                )
+                                              ],
+                                            ),
+                                          );
+                                        }
                                       }
                                     },
                                   ),

@@ -5,7 +5,7 @@ import 'package:my_hris/core/login/domain/repository/login_repo_impl.dart';
 
 class LoginInteractor implements ILoginRepo {
   @override
-  Future<LoginModel> login(String email, String password) async {
-    return await loginDomainInjector<LoginRepoImpl>().login(email, password);
+  Future<LoginModel> login() async {
+    return await loginDomainInjector<LoginRepoImpl>().login();
   }
 }
