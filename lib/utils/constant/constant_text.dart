@@ -63,3 +63,6 @@ const String profileRoute = '/profile_page';
 const String holidayRoute = '/holiday_page';
 const String employeesRoute = '/employees_page';
 const String companyRoute = '/company_page';
+
+//for error
+const String errorMsg = "Oops, Sepertinya Eror";

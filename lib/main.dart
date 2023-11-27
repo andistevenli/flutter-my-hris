@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_hris/feature/splash/screen/splash_screen.dart';
 import 'package:my_hris/utils/constant/constant_text.dart';
 import 'package:my_hris/utils/key/navigator_key.dart';
 
@@ -21,7 +22,9 @@ class MyHris extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       navigatorKey: navigatorKey,
       initialRoute: splashRoute,
-      routes: {},
+      routes: {
+        splashRoute: (context) => const SplashScreen(),
+      },
     );
   }
 }
