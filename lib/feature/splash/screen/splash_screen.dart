@@ -30,11 +30,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     Timer(
       const Duration(milliseconds: 2000),
       () async {
-        if (_isLoggedIn) {
-          Navigator.pushReplacementNamed(context, dashboardRoute);
-        } else {
-          Navigator.pushReplacementNamed(context, loginRoute);
-        }
+        // if (_isLoggedIn) {
+        //   Navigator.pushReplacementNamed(context, dashboardRoute);
+        // } else {
+        //   Navigator.pushReplacementNamed(context, loginRoute);
+        // }
       },
     );
   }

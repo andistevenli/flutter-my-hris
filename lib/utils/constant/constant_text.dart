@@ -55,14 +55,14 @@ const String contact = "Contact";
 const String logout = "Logout";
 
 //for route
-const String resetPassRoute = '/reset_pass_page';
-const String dashboardRoute = '/dashboard_page';
-const String splashRoute = '/splash_page';
-const String loginRoute = '/login_page';
-const String profileRoute = '/profile_page';
-const String holidayRoute = '/holiday_page';
-const String employeesRoute = '/employees_page';
-const String companyRoute = '/company_page';
+const String resetPassRoute = '/reset_pass_screen';
+const String dashboardRoute = '/dashboard_screen';
+const String splashRoute = '/splash_screen';
+const String loginRoute = '/login_screen';
+const String profileRoute = '/profile_screen';
+const String holidayRoute = '/holiday_screen';
+const String employeesRoute = '/employees_screen';
+const String companyRoute = '/company_screen';
 
 //for error
 const String errorMsg = "Oops, Sepertinya Eror";
