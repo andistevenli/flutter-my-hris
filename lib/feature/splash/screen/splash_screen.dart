@@ -1,9 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_hris/feature/splash/controller/splash_controller.dart';
-import 'package:my_hris/utils/constant/constant_text.dart';
+import 'package:my_hris/utils/constant/constant_route.dart';
 import 'package:my_hris/utils/constant/constant_unit.dart';
 import 'package:my_hris/utils/constant/constant_url.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,11 +29,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     Timer(
       const Duration(milliseconds: 2000),
       () async {
-        // if (_isLoggedIn) {
-        //   Navigator.pushReplacementNamed(context, dashboardRoute);
-        // } else {
-        //   Navigator.pushReplacementNamed(context, loginRoute);
-        // }
+        if (_isLoggedIn) {
+          Navigator.pushReplacementNamed(context, dashboardRoute);
+        } else {
+          Navigator.pushReplacementNamed(context, loginRoute);
+        }
       },
     );
   }
