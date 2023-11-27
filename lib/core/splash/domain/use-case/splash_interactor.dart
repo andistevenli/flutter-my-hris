@@ -5,9 +5,8 @@ import 'package:my_hris/core/splash/domain/use-case/splash_use_case.dart';
 
 class SplashInteractor implements SplashUseCase {
   @override
-  Future<SplashModel> generateEurekaEdutechLogo(
-      String eurekaEdutechLogoUrl) async {
+  Future<SplashModel> generateEurekaEdutechLogo() async {
     return await splashDomainInjector<SplashRepoImpl>()
-        .generateEurekaEdutechLogo(eurekaEdutechLogoUrl);
+        .generateEurekaEdutechLogo();
   }
 }

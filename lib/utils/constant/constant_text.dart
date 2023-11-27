@@ -13,6 +13,8 @@ const String resetPassBack = "Back to login";
 const String resetPassMsg = "Check your email, we've sent them";
 
 //for inputs
+const String requiredSymbol = " *";
+const String incorrect = "Incorrect";
 const String invalid = "Invalid ";
 const String isRequired = " is required";
 const String choose = "Choose ";
@@ -54,15 +56,14 @@ const String doc = "Documentation";
 const String contact = "Contact";
 const String logout = "Logout";
 
-//for route
-const String resetPassRoute = '/reset_pass_screen';
-const String dashboardRoute = '/dashboard_screen';
-const String splashRoute = '/splash_screen';
-const String loginRoute = '/login_screen';
-const String profileRoute = '/profile_screen';
-const String holidayRoute = '/holiday_screen';
-const String employeesRoute = '/employees_screen';
-const String companyRoute = '/company_screen';
-
 //for error
 const String errorMsg = "Oops, Sepertinya Eror";
+
+//for eureka edutech
+const String eurekaEdutechLogoUrl =
+    'https://play-lh.googleusercontent.com/CgtHFkL-KeiIfo6LUy-lHavAZi2ZgwQcZ_VXUKsELXyBZha2RCqGBPcv4cj8s1Z6pLn0=w240-h480-rw';
+
+//for affirmative action
+const String okay = "Okay";
+
+//for non affirmative action
