@@ -184,19 +184,6 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                                                       ),
                                                       onPressed: () {},
                                                     ),
-                                                    // PrimaryButton(
-                                                    //   withIcon: true,
-                                                    //   icon: Icons.person,
-                                                    //   text: 'Detail Profile'.md(
-                                                    //     1,
-                                                    //     TextOverflow.ellipsis,
-                                                    //     color: whiteColor,
-                                                    //     bold: true,
-                                                    //     textAlign:
-                                                    //         TextAlign.center,
-                                                    //   ),
-                                                    //   onPressed: () {},
-                                                    // ),
                                                   ],
                                                 );
                                               },
@@ -235,6 +222,95 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                                           textAlign: TextAlign.center),
                                       onPressed: () => Navigator.pushNamed(
                                           context, requestRoute),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              24.0.dp,
+                              Box(
+                                child: Column(
+                                  children: [
+                                    'About'.sm(
+                                      1,
+                                      TextOverflow.ellipsis,
+                                      color: greyColor,
+                                      bold: true,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    16.0.dp,
+                                    PrimaryButton(
+                                      withIcon: false,
+                                      icon: Icons.abc,
+                                      text: 'Company'.md(
+                                        1,
+                                        TextOverflow.ellipsis,
+                                        color: whiteColor,
+                                        bold: true,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      onPressed: () {
+                                        showModalBottomSheet(
+                                          context: context,
+                                          builder: (context) {
+                                            return CustomBottomSheetBuilder(
+                                              title: 'Company',
+                                              content: [
+                                                PrimaryButton(
+                                                  withIcon: false,
+                                                  icon: Icons.abc,
+                                                  text: 'General'.md(
+                                                    1,
+                                                    TextOverflow.ellipsis,
+                                                    color: whiteColor,
+                                                    bold: true,
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                  onPressed: () {},
+                                                ),
+                                                16.0.dp,
+                                                PrimaryButton(
+                                                  withIcon: false,
+                                                  icon: Icons.abc,
+                                                  text: 'Department'.md(
+                                                    1,
+                                                    TextOverflow.ellipsis,
+                                                    color: whiteColor,
+                                                    bold: true,
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                  onPressed: () {},
+                                                ),
+                                                16.0.dp,
+                                                PrimaryButton(
+                                                  withIcon: false,
+                                                  icon: Icons.abc,
+                                                  text: 'Position'.md(
+                                                    1,
+                                                    TextOverflow.ellipsis,
+                                                    color: whiteColor,
+                                                    bold: true,
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                  onPressed: () {},
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
+                                    16.0.dp,
+                                    PrimaryButton(
+                                      withIcon: false,
+                                      icon: Icons.abc,
+                                      text: 'Employee'.md(
+                                        1,
+                                        TextOverflow.ellipsis,
+                                        color: whiteColor,
+                                        bold: true,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      onPressed: () {},
                                     ),
                                   ],
                                 ),
