@@ -230,7 +230,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                                           color: whiteColor,
                                           bold: true,
                                           textAlign: TextAlign.center),
-                                      onPressed: () {},
+                                      onPressed: () => Navigator.pushNamed(
+                                          context, requestRoute),
                                     ),
                                   ],
                                 ),
