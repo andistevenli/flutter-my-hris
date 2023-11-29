@@ -151,7 +151,10 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                                                         textAlign:
                                                             TextAlign.center,
                                                       ),
-                                                      onPressed: () {},
+                                                      onPressed: () =>
+                                                          Navigator.pushNamed(
+                                                              context,
+                                                              profileRoute),
                                                     ),
                                                     16.0.dp,
                                                     PrimaryButton(
