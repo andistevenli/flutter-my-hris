@@ -41,7 +41,7 @@ class _TextActionButtonState extends State<TextActionButton> {
         ),
       ),
       onPressed: widget.onPressed,
-      child: widget.text.md(
+      child: widget.text.sm(
         1,
         TextOverflow.ellipsis,
         color: primaryColor,

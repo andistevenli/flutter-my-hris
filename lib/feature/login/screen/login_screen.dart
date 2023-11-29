@@ -199,7 +199,7 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              loginForgotPass.md(
+                              loginForgotPass.sm(
                                 1,
                                 TextOverflow.ellipsis,
                                 color: darkGreyColor,
