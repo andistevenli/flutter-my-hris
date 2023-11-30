@@ -58,11 +58,11 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                             child: Image.network(
                               eurekaEdutechLogoUrl,
                               fit: BoxFit.cover,
-                              height: 128,
-                              width: 128,
+                              height: 100,
+                              width: 100,
                             ),
                           ),
-                          196.0.dp,
+                          32.0.dp,
                           Form(
                             key: _formKey,
                             child: Box(
@@ -80,7 +80,7 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
-                                  128.0.dp,
+                                  16.0.dp,
                                   (email + requiredSymbol).sm(
                                     1,
                                     TextOverflow.ellipsis,
@@ -88,7 +88,7 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                                     bold: false,
                                     textAlign: TextAlign.center,
                                   ),
-                                  16.0.dp,
+                                  8.0.dp,
                                   TextBox(
                                     textEditingController: _emailController,
                                     last: false,
@@ -114,7 +114,7 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                                       return null;
                                     },
                                   ),
-                                  64.0.dp,
+                                  16.0.dp,
                                   (password + requiredSymbol).sm(
                                     1,
                                     TextOverflow.ellipsis,
@@ -122,7 +122,7 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                                     bold: false,
                                     textAlign: TextAlign.center,
                                   ),
-                                  16.0.dp,
+                                  8.0.dp,
                                   TextBox(
                                     textEditingController: _passwordController,
                                     last: true,
@@ -151,7 +151,7 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                                       return null;
                                     },
                                   ),
-                                  196.0.dp,
+                                  64.0.dp,
                                   PrimaryButton(
                                     withIcon: false,
                                     icon: Icons.login,
@@ -194,7 +194,7 @@ class _LoginPageState extends ConsumerState<LoginScreen> {
                               ),
                             ),
                           ),
-                          128.0.dp,
+                          24.0.dp,
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
