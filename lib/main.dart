@@ -20,6 +20,7 @@ import 'package:my_hris/feature/employees/screen/employees_detail_screen.dart';
 import 'package:my_hris/feature/employees/screen/employees_screen.dart';
 import 'package:my_hris/feature/login/screen/login_screen.dart';
 import 'package:my_hris/feature/login/screen/reset_pass_screen.dart';
+import 'package:my_hris/feature/profile/screen/contact_screen.dart';
 import 'package:my_hris/feature/profile/screen/profile_screen.dart';
 import 'package:my_hris/feature/request/screen/request_screen.dart';
 import 'package:my_hris/feature/splash/screen/splash_screen.dart';
@@ -68,6 +69,7 @@ class MyHris extends StatelessWidget {
         clockInOutRoute: (context) => const ClockInOutScreen(),
         requestRoute: (context) => const RequestScreen(),
         profileRoute: (context) => const ProfileScreen(),
+        contactRoute: (context) => const ContactScreen(),
         employeesRoute: (context) => const EmployeesSceen(),
         employeesDetailRoute: (context) => const EmployeesDetailScreen(),
         companyRoute: (context) => const CompanyScreen(),
