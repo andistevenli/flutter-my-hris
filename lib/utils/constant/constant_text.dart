@@ -62,8 +62,22 @@ const String errorMsg = "Oops, Sepertinya Eror";
 //for eureka edutech
 const String eurekaEdutechLogoUrl =
     'https://play-lh.googleusercontent.com/CgtHFkL-KeiIfo6LUy-lHavAZi2ZgwQcZ_VXUKsELXyBZha2RCqGBPcv4cj8s1Z6pLn0=w240-h480-rw';
+const String eurekaHrisDocsUrl =
+    'https://drive.google.com/drive/folders/1g_L6B1AwnIiMBtpw5t3QtOeo_Nl_h_eU';
 
 //for affirmative action
 const String okay = "Okay";
 
 //for non affirmative action
+
+//for greetings
+const String morning = "Good Morning,";
+const String morningToNoon = "Keep Up Your Spirit,";
+const String noon = "Enjoy Your Lunch,";
+const String afternoon = "You are GREAT,";
+const String timeForHome = "Time For Home,,";
+const String evening = "Good Evening,";
+const String defaultGreeting = "Hello,";
+
+//for presence content
+const String present = 'Swipe To Present';
