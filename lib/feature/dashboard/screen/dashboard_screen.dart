@@ -182,7 +182,10 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                                                         textAlign:
                                                             TextAlign.center,
                                                       ),
-                                                      onPressed: () {},
+                                                      onPressed: () =>
+                                                          Navigator.pushNamed(
+                                                              context,
+                                                              contactRoute),
                                                     ),
                                                     // PrimaryButton(
                                                     //   withIcon: true,
