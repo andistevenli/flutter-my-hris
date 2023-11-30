@@ -4,10 +4,13 @@ import 'package:my_hris/feature/profile/controller/profile_controller.dart';
 import 'package:my_hris/feature/profile/widget/info_list.dart';
 import 'package:my_hris/feature/widget/box.dart';
 import 'package:my_hris/feature/widget/primary_button.dart';
+import 'package:my_hris/feature/widget/text_action_button.dart';
 import 'package:my_hris/utils/constant/constant_color.dart';
+import 'package:my_hris/utils/constant/constant_route.dart';
 import 'package:my_hris/utils/constant/constant_unit.dart';
 import 'package:my_hris/utils/extension/space.dart';
 import 'package:my_hris/utils/extension/typography.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
@@ -17,6 +20,11 @@ class ProfileScreen extends ConsumerStatefulWidget {
 }
 
 class _ProfileScreenState extends ConsumerState<ProfileScreen> {
+  void logout() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    sp.setBool('logged_in', false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -275,6 +283,43 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                                   textAlign: TextAlign.center,
                                 ),
                                 onPressed: () {},
+                              ),
+                              16.0.dp,
+                              TextButton(
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.resolveWith<Color>(
+                                    (Set<MaterialState> states) {
+                                      if (states
+                                          .contains(MaterialState.pressed)) {
+                                        return primary10Color;
+                                      } else {
+                                        return whiteColor;
+                                      }
+                                    },
+                                  ),
+                                  elevation:
+                                      const MaterialStatePropertyAll<double>(0),
+                                  shape: MaterialStatePropertyAll<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(borderRadius),
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  logout();
+                                  Navigator.pushNamedAndRemoveUntil(
+                                      context, loginRoute, (route) => false);
+                                },
+                                child: 'Logout'.md(
+                                  1,
+                                  TextOverflow.ellipsis,
+                                  color: errorColor,
+                                  bold: false,
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ],
                           ),
