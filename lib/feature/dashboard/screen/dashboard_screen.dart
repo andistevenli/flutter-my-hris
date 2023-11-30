@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_hris/feature/company/screen/company_screen.dart';
 import 'package:my_hris/feature/dashboard/controller/dashboard_controller.dart';
 import 'package:my_hris/feature/widget/box.dart';
 import 'package:my_hris/feature/widget/custom_bottom_sheet_builder.dart';
@@ -57,7 +58,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                     .watch(dashboardController)
                     .when(
                       data: (data) => Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 16, 16, 100),
+                        padding: const EdgeInsets.only(bottom: 80),
                         child: SingleChildScrollView(
                           physics: const BouncingScrollPhysics(),
                           child: Column(
@@ -187,19 +188,6 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                                                               context,
                                                               contactRoute),
                                                     ),
-                                                    // PrimaryButton(
-                                                    //   withIcon: true,
-                                                    //   icon: Icons.person,
-                                                    //   text: 'Detail Profile'.md(
-                                                    //     1,
-                                                    //     TextOverflow.ellipsis,
-                                                    //     color: whiteColor,
-                                                    //     bold: true,
-                                                    //     textAlign:
-                                                    //         TextAlign.center,
-                                                    //   ),
-                                                    //   onPressed: () {},
-                                                    // ),
                                                   ],
                                                 );
                                               },
@@ -238,6 +226,120 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                                           textAlign: TextAlign.center),
                                       onPressed: () => Navigator.pushNamed(
                                           context, requestRoute),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              24.0.dp,
+                              Box(
+                                child: Column(
+                                  children: [
+                                    'About'.sm(
+                                      1,
+                                      TextOverflow.ellipsis,
+                                      color: greyColor,
+                                      bold: true,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    16.0.dp,
+                                    PrimaryButton(
+                                      withIcon: false,
+                                      icon: Icons.abc,
+                                      text: 'Company'.md(
+                                        1,
+                                        TextOverflow.ellipsis,
+                                        color: whiteColor,
+                                        bold: true,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      onPressed: () {
+                                        showModalBottomSheet(
+                                          context: context,
+                                          builder: (context) {
+                                            return CustomBottomSheetBuilder(
+                                              title: 'Company',
+                                              content: [
+                                                PrimaryButton(
+                                                  withIcon: false,
+                                                  icon: Icons.abc,
+                                                  text: 'General'.md(
+                                                    1,
+                                                    TextOverflow.ellipsis,
+                                                    color: whiteColor,
+                                                    bold: true,
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                  onPressed: () =>
+                                                      Navigator.pushNamed(
+                                                    context,
+                                                    companyRoute,
+                                                    arguments:
+                                                        CompanyScreenArgument(
+                                                      id: 1,
+                                                    ),
+                                                  ),
+                                                ),
+                                                16.0.dp,
+                                                PrimaryButton(
+                                                  withIcon: false,
+                                                  icon: Icons.abc,
+                                                  text: 'Department'.md(
+                                                    1,
+                                                    TextOverflow.ellipsis,
+                                                    color: whiteColor,
+                                                    bold: true,
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                  onPressed: () =>
+                                                      Navigator.pushNamed(
+                                                    context,
+                                                    companyRoute,
+                                                    arguments:
+                                                        CompanyScreenArgument(
+                                                      id: 2,
+                                                    ),
+                                                  ),
+                                                ),
+                                                16.0.dp,
+                                                PrimaryButton(
+                                                  withIcon: false,
+                                                  icon: Icons.abc,
+                                                  text: 'Position'.md(
+                                                    1,
+                                                    TextOverflow.ellipsis,
+                                                    color: whiteColor,
+                                                    bold: true,
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                  onPressed: () =>
+                                                      Navigator.pushNamed(
+                                                    context,
+                                                    companyRoute,
+                                                    arguments:
+                                                        CompanyScreenArgument(
+                                                      id: 3,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
+                                    16.0.dp,
+                                    PrimaryButton(
+                                      withIcon: false,
+                                      icon: Icons.abc,
+                                      text: 'Employee'.md(
+                                        1,
+                                        TextOverflow.ellipsis,
+                                        color: whiteColor,
+                                        bold: true,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      onPressed: () => Navigator.pushNamed(
+                                          context, employeesRoute),
                                     ),
                                   ],
                                 ),

@@ -44,7 +44,7 @@ class _TextActionButtonState extends State<TextActionButton> {
       child: widget.text.sm(
         1,
         TextOverflow.ellipsis,
-        color: primaryColor,
+        color: infoColor,
         bold: false,
         textAlign: TextAlign.center,
       ),
