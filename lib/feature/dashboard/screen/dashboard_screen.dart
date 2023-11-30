@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_hris/feature/company/screen/company_screen.dart';
 import 'package:my_hris/feature/dashboard/controller/dashboard_controller.dart';
 import 'package:my_hris/feature/widget/box.dart';
 import 'package:my_hris/feature/widget/custom_bottom_sheet_builder.dart';
@@ -265,7 +266,15 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                                                     bold: true,
                                                     textAlign: TextAlign.center,
                                                   ),
-                                                  onPressed: () {},
+                                                  onPressed: () =>
+                                                      Navigator.pushNamed(
+                                                    context,
+                                                    companyRoute,
+                                                    arguments:
+                                                        CompanyScreenArgument(
+                                                      id: 1,
+                                                    ),
+                                                  ),
                                                 ),
                                                 16.0.dp,
                                                 PrimaryButton(
@@ -278,7 +287,15 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                                                     bold: true,
                                                     textAlign: TextAlign.center,
                                                   ),
-                                                  onPressed: () {},
+                                                  onPressed: () =>
+                                                      Navigator.pushNamed(
+                                                    context,
+                                                    companyRoute,
+                                                    arguments:
+                                                        CompanyScreenArgument(
+                                                      id: 2,
+                                                    ),
+                                                  ),
                                                 ),
                                                 16.0.dp,
                                                 PrimaryButton(
@@ -291,7 +308,15 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                                                     bold: true,
                                                     textAlign: TextAlign.center,
                                                   ),
-                                                  onPressed: () {},
+                                                  onPressed: () =>
+                                                      Navigator.pushNamed(
+                                                    context,
+                                                    companyRoute,
+                                                    arguments:
+                                                        CompanyScreenArgument(
+                                                      id: 3,
+                                                    ),
+                                                  ),
                                                 ),
                                               ],
                                             );
