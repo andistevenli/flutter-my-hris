@@ -40,11 +40,11 @@ class _ResetPassPageState extends State<ReserPassScreen> {
                     child: Image.network(
                       eurekaEdutechLogoUrl,
                       fit: BoxFit.cover,
-                      height: 128,
-                      width: 128,
+                      height: 100,
+                      width: 100,
                     ),
                   ),
-                  196.0.dp,
+                  32.0.dp,
                   Form(
                     key: _formKey,
                     child: Box(
@@ -62,7 +62,7 @@ class _ResetPassPageState extends State<ReserPassScreen> {
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          128.0.dp,
+                          16.0.dp,
                           SizedBox(
                             width: double.infinity,
                             child: resetPassDesc.sm(
@@ -73,7 +73,7 @@ class _ResetPassPageState extends State<ReserPassScreen> {
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          128.0.dp,
+                          24.0.dp,
                           (email + requiredSymbol).sm(
                             1,
                             TextOverflow.ellipsis,
@@ -81,7 +81,7 @@ class _ResetPassPageState extends State<ReserPassScreen> {
                             bold: false,
                             textAlign: TextAlign.center,
                           ),
-                          16.0.dp,
+                          8.0.dp,
                           TextBox(
                             textEditingController: _emailController,
                             last: true,
@@ -107,7 +107,7 @@ class _ResetPassPageState extends State<ReserPassScreen> {
                               return null;
                             },
                           ),
-                          196.0.dp,
+                          32.0.dp,
                           PrimaryButton(
                             withIcon: false,
                             icon: Icons.login,
@@ -135,7 +135,7 @@ class _ResetPassPageState extends State<ReserPassScreen> {
                       ),
                     ),
                   ),
-                  128.0.dp,
+                  16.0.dp,
                   TextActionButton(
                     text: resetPassBack,
                     bgColor: whiteF7Color,
