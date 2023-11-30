@@ -1,3 +1,4 @@
+import 'package:my_hris/core/company/data/dto/department_dto.dart';
 import 'package:my_hris/core/employees/data/dto/employees_dto.dart';
 import 'package:my_hris/core/employees/data/dto/employees_employment_dto.dart';
 import 'package:my_hris/core/employees/data/dto/employees_personal_dto.dart';
@@ -106,5 +107,59 @@ class EmployeesLocalDataSource {
     } catch (e) {
       throw Exception(e);
     }
+  }
+
+  Future<List<DepartmentDTO>> getDepartmentInfo() async {
+    List<DepartmentDTO> list = [
+      DepartmentDTO(
+        departmentName: 'Engineer',
+        lead: 'Muhammad Adam',
+        employees: 7,
+        status: 'Active',
+      ),
+      DepartmentDTO(
+        departmentName: 'Management',
+        lead: 'Yogi Lesmana',
+        employees: 4,
+        status: 'Active',
+      ),
+      DepartmentDTO(
+        departmentName: 'Edutainment',
+        lead: 'Iftihal Rahman',
+        employees: 3,
+        status: 'Active',
+      ),
+      DepartmentDTO(
+        departmentName: 'Creative',
+        lead: 'Ilham Maulana Zapar Sidik',
+        employees: 3,
+        status: 'Active',
+      ),
+      DepartmentDTO(
+        departmentName: 'Finance',
+        lead: 'Eta Aprilia',
+        employees: 2,
+        status: 'Active',
+      ),
+      DepartmentDTO(
+        departmentName: 'Xpert',
+        lead: 'Putri Husnul Aprilia',
+        employees: 4,
+        status: 'Active',
+      ),
+      DepartmentDTO(
+        departmentName: 'Logistik',
+        lead: 'Ragil Wisnu Witarto',
+        employees: 2,
+        status: 'Active',
+      ),
+      DepartmentDTO(
+        departmentName: 'Edutech',
+        lead: 'Cahyarani Paramesti',
+        employees: 7,
+        status: 'Active',
+      ),
+    ];
+    return list;
   }
 }
