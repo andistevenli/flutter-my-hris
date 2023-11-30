@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:my_hris/core/dashboard/domain/entity/user_location_model.dart';
+import 'package:my_hris/core/dashboard/domain/use-case/dashboard_interactor.dart';
 import 'package:my_hris/feature/company/screen/company_screen.dart';
 import 'package:my_hris/feature/dashboard/controller/dashboard_controller.dart';
+import 'package:my_hris/feature/dashboard/di/dashboard_feat_injector.dart';
+import 'package:my_hris/feature/dashboard/screen/clock_in_out_screen.dart';
+import 'package:my_hris/feature/dashboard/widget/location_dialog.dart';
 import 'package:my_hris/feature/widget/box.dart';
 import 'package:my_hris/feature/widget/custom_bottom_sheet_builder.dart';
 import 'package:my_hris/feature/widget/primary_button.dart';
@@ -11,6 +17,8 @@ import 'package:my_hris/utils/constant/constant_text.dart';
 import 'package:my_hris/utils/constant/constant_unit.dart';
 import 'package:my_hris/utils/extension/space.dart';
 import 'package:my_hris/utils/extension/typography.dart';
+import 'package:my_hris/utils/math/calculate_distance.dart';
+// import 'package:my_hris/utils/math/calculate_distance.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:swipeable_button_view/swipeable_button_view.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -28,14 +36,32 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   late SharedPreferences sp;
   final DateTime now = DateTime.now();
   late String greeting;
+  UserLocationModel location = UserLocationModel(
+    userLongitude: 0,
+    userLatitude: 0,
+    targetLongitude: 0,
+    targetLatitude: 0,
+    address: '',
+  );
 
   @override
   void initState() {
     super.initState();
+    askingLocationPermission();
   }
 
   void checkPresentStatus() async {
     sp = await SharedPreferences.getInstance();
+  }
+
+  void askingLocationPermission() async {
+    await Geolocator.checkPermission();
+    await Geolocator.requestPermission();
+  }
+
+  void getCurrentLocation() async {
+    location =
+        await dashboardFeatInjector<DashboardInteractor>().getCurrentLocation();
   }
 
   Future<void> _launchUrl() async {
@@ -224,8 +250,23 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                                           color: whiteColor,
                                           bold: true,
                                           textAlign: TextAlign.center),
-                                      onPressed: () => Navigator.pushNamed(
-                                          context, requestRoute),
+                                      onPressed: () {
+                                        getCurrentLocation();
+                                        showDialog(
+                                          context: context,
+                                          barrierDismissible: false,
+                                          builder: (context) {
+                                            return LocationDialog(
+                                              userLocationModel: location,
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                Navigator.pushNamed(
+                                                    context, requestRoute);
+                                              },
+                                            );
+                                          },
+                                        );
+                                      },
                                     ),
                                   ],
                                 ),
@@ -517,6 +558,58 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                       ),
                     ),
               ),
+              // Consumer(
+              //   builder: (context, ref, child) => ref
+              //       .watch(dashboardLocationController)
+              //       .when(
+              //         data: (data) => Align(
+              //           alignment: Alignment.bottomCenter,
+              //           child: SwipeableButtonView(
+              //             buttonText: present,
+              //             buttonWidget: const Icon(
+              //               Icons.arrow_forward_ios_rounded,
+              //               color: successColor,
+              //             ),
+              //             activeColor: successColor,
+              //             isFinished: _isFinished,
+              //             onWaitingProcess: () {
+              //               Future.delayed(const Duration(seconds: 1), () {
+              //                 setState(() {
+              //                   _isFinished = true;
+              //                 });
+              //               });
+              //             },
+              //             onFinish: () async {
+              //               // final double distance = calculateDistance(
+              //               //   userLocationModel.userLatitude,
+              //               //   userLocationModel.userLongitude,
+              //               //   userLocationModel.targetLatitude,
+              //               //   userLocationModel.targetLongitude,
+              //               // );
+              //               await Navigator.pushNamed(context, clockInOutRoute,
+              //                   arguments: ClockInOutArgument(failed: false));
+              //               setState(() {
+              //                 _isFinished = false;
+              //               });
+              //             },
+              //           ),
+              //         ),
+              //         error: (error, stackTrace) => Align(
+              //           alignment: Alignment.bottomCenter,
+              //           child: 'Error'.xl(
+              //             1,
+              //             TextOverflow.ellipsis,
+              //             color: errorColor,
+              //             bold: true,
+              //             textAlign: TextAlign.center,
+              //           ),
+              //         ),
+              //         loading: () => const Align(
+              //           alignment: Alignment.bottomCenter,
+              //           child: CircularProgressIndicator(),
+              //         ),
+              //       ),
+              // ),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: SwipeableButtonView(
@@ -535,10 +628,15 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                     });
                   },
                   onFinish: () async {
-                    await Navigator.pushNamed(
-                      context,
-                      clockInOutRoute,
+                    getCurrentLocation();
+                    final double distance = calculateDistance(
+                      location.userLatitude,
+                      location.userLongitude,
+                      location.targetLatitude,
+                      location.targetLongitude,
                     );
+                    await Navigator.pushNamed(context, clockInOutRoute,
+                        arguments: ClockInOutArgument(failed: distance > 1 ? true : false));
                     setState(() {
                       _isFinished = false;
                     });

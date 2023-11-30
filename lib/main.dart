@@ -14,6 +14,7 @@ import 'package:my_hris/core/request/domain/di/request_domain_injector.dart';
 import 'package:my_hris/core/splash/data/di/splash_data_injector.dart';
 import 'package:my_hris/core/splash/domain/di/splash_domain_injector.dart';
 import 'package:my_hris/feature/company/screen/company_screen.dart';
+import 'package:my_hris/feature/dashboard/di/dashboard_feat_injector.dart';
 import 'package:my_hris/feature/dashboard/screen/clock_in_out_screen.dart';
 import 'package:my_hris/feature/dashboard/screen/dashboard_screen.dart';
 import 'package:my_hris/feature/employees/screen/employees_detail_screen.dart';
@@ -44,6 +45,7 @@ void main() {
   employeesDomainInjectorSetup();
   companyDataInjectorSetup();
   companyDomainInjectorSetup();
+  dashboardFeatInjectorSetup();
   runApp(
     const ProviderScope(
       child: MyHris(),
