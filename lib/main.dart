@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_hris/core/dashboard/data/di/dashboard_data_injector.dart';
 import 'package:my_hris/core/dashboard/domain/di/dashboard_domain_injector.dart';
+import 'package:my_hris/core/employees/data/di/employees_data_injector.dart';
+import 'package:my_hris/core/employees/domain/di/employees_domain_injector.dart';
 import 'package:my_hris/core/login/data/di/login_data_injector.dart';
 import 'package:my_hris/core/login/domain/di/login_domain_injector.dart';
 import 'package:my_hris/core/profile/data/di/profile_data_injector.dart';
@@ -11,6 +13,8 @@ import 'package:my_hris/core/splash/data/di/splash_data_injector.dart';
 import 'package:my_hris/core/splash/domain/di/splash_domain_injector.dart';
 import 'package:my_hris/feature/dashboard/screen/clock_in_out_screen.dart';
 import 'package:my_hris/feature/dashboard/screen/dashboard_screen.dart';
+import 'package:my_hris/feature/employees/screen/employees_detail_screen.dart';
+import 'package:my_hris/feature/employees/screen/employees_screen.dart';
 import 'package:my_hris/feature/login/screen/login_screen.dart';
 import 'package:my_hris/feature/login/screen/reset_pass_screen.dart';
 import 'package:my_hris/feature/profile/screen/profile_screen.dart';
@@ -32,6 +36,8 @@ void main() {
   requestDataInjectorSetup();
   profileDataInjectorSetup();
   profileDomainInjectorSetup();
+  employeesDataInjectorSetup();
+  employeesDomainInjectorSetup();
   runApp(
     const ProviderScope(
       child: MyHris(),
@@ -57,6 +63,8 @@ class MyHris extends StatelessWidget {
         clockInOutRoute: (context) => const ClockInOutScreen(),
         requestRoute: (context) => const RequestScreen(),
         profileRoute: (context) => const ProfileScreen(),
+        employeesRoute: (context) => const EmployeesSceen(),
+        employeesDetailRoute: (context) => const EmployeesDetailScreen(),
       },
       onGenerateRoute: (settings) {
         switch (settings.name) {

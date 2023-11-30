@@ -57,7 +57,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                     .watch(dashboardController)
                     .when(
                       data: (data) => Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 16, 16, 100),
+                        padding: const EdgeInsets.only(bottom: 80),
                         child: SingleChildScrollView(
                           physics: const BouncingScrollPhysics(),
                           child: Column(
@@ -310,7 +310,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                                         bold: true,
                                         textAlign: TextAlign.center,
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () => Navigator.pushNamed(
+                                          context, employeesRoute),
                                     ),
                                   ],
                                 ),
