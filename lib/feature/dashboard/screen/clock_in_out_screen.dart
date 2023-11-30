@@ -16,9 +16,11 @@ class _ClockInOutScreenState extends State<ClockInOutScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as ClockInOutArgument;
     return Scaffold(
       body: Container(
-        color: successColor,
+        color: args.failed == false ? successColor : errorColor,
         child: Padding(
           padding: const EdgeInsets.all(pagePadding),
           child: SafeArea(
@@ -37,28 +39,36 @@ class _ClockInOutScreenState extends State<ClockInOutScreen> {
                 ),
                 Align(
                   alignment: Alignment.center,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      'Clocked At'.xl(
-                        1,
-                        TextOverflow.ellipsis,
-                        color: whiteColor,
-                        bold: false,
-                        textAlign: TextAlign.center,
-                      ),
-                      24.0.dp,
-                      Text(
-                        "${now.hour} : ${now.minute}",
-                        style: const TextStyle(
-                          fontSize: 44,
-                          fontWeight: FontWeight.bold,
+                  child: args.failed == false
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            'Clocked At'.xl(
+                              1,
+                              TextOverflow.ellipsis,
+                              color: whiteColor,
+                              bold: false,
+                              textAlign: TextAlign.center,
+                            ),
+                            24.0.dp,
+                            Text(
+                              "${now.hour} : ${now.minute}",
+                              style: const TextStyle(
+                                fontSize: 44,
+                                fontWeight: FontWeight.bold,
+                                color: whiteColor,
+                              ),
+                            ),
+                          ],
+                        )
+                      : 'you are outside the scope of the office'.xl(
+                          2,
+                          TextOverflow.ellipsis,
                           color: whiteColor,
+                          bold: true,
+                          textAlign: TextAlign.center,
                         ),
-                      ),
-                    ],
-                  ),
                 ),
               ],
             ),
@@ -67,4 +77,10 @@ class _ClockInOutScreenState extends State<ClockInOutScreen> {
       ),
     );
   }
+}
+
+class ClockInOutArgument {
+  final bool failed;
+
+  ClockInOutArgument({required this.failed});
 }
